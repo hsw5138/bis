@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>View Schedule single entry.</h1>
+		<table>
+				<tr>
+					<td>Subject_Id:</td>
+					<td>{{ schedule.subject_id }}</td>
+				</tr>
+				<tr>
+					<td>Student_Id:</td>
+					<td>{{ schedule.student_id }}</td>
+				</tr>
+				<tr>
+					<td>Teacher_Id:</td>
+					<td>{{ schedule.teacher_id }}</td>
+				</tr>
+		</table>
+{% endblock %}

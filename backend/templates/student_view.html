@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>View Student single entry.</h1>
+		<table>
+				<tr>
+					<td>Name:</td>
+					<td>{{ subject.name }}</td>
+				</tr>
+				<tr>
+					<td>Username:</td>
+					<td>{{ subject.username }}</td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td>{{ subject.email }}</td>
+				</tr>
+		</table>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Edit Homework Entries.</h1>
+		<form id="edit-form" name="homework_add" method="put" action="/homework/{{ homework_item.id }}">
+		<input type="hidden" id="url" value="/homework/{{ homework_item.id }}">
+		<table>
+				<tr>
+					<td>Title:</td>
+					<td><input type="text" name="title" value="{{ homework_item.title }}"/></td>
+				</tr>
+				<tr>
+					<td>Due_Date:</td>
+					<td><input type="text" name="due_date" value="{{ homework_item.due_date }}"/></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><input type="text" name="description" value="{{ homework_item.description }}"/></td>
+				</tr>
+				<tr>
+					<td><input id="submit-put" type="submit" name="submit" value="Edit Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Edit Student Entries.</h1>
+		<form id="edit-form" name="student_add" method="put" action="/student/{{ student_item.id }}">
+		<input type="hidden" id="url" value="/student/{{ student_item.id }}">
+		<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" value="{{ student_item.name }}"/></td>
+				</tr>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" value="{{ student_item.username}}"/></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password" value="{{ student_item.password }}"/></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><input type="text" name="email" value="{{ student_item.email }}"/></td>
+				</tr>
+				<tr>
+					<td><input id="submit-put" type="submit" name="submit" value="Edit Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+{% endblock %}

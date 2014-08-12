@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Add new Homework Entries.</h1>
+		<form name="homework_add" method="post" action="/homework/">
+		<table>
+				<tr>
+					<td>Title:</td>
+					<td><input type="text" name="title"/></td>
+				</tr>
+				<tr>
+					<td>Due_Date:</td>
+					<td><input type="date" name="due_date"></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><input type="text" name="description"/></td>
+				</tr>
+				<tr>
+					<td>Schedule_Id:</td>
+				<td>
+						<select name="schedule_id">
+							{% for schedule in schedules %}
+								<option value="{{ schedule.id }}">{{ schedule.name }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				<tr>
+					<td><input type="submit" name="submit" value="Add Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+
+		<a id="actions" href="/homework/upload">Upload Excel</a>
+{% endblock %}

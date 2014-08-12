@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>List of Homework Entries.</h1>
+		<table id="list-view">
+			<thead>
+				<tr>
+					<td><b>ID</td>
+					<td><b>Title</b></td>
+					<td><b>Due_Date</b></td>
+					<td><b>Description</b></td>
+					<td><b>Schedule_Id</td>
+					<td><b> </td>
+					<td><b> </td>
+				</tr>
+			</thead>
+			{% if homework_entries %}
+			<tbody>
+			{% for entry in homework_entries %}
+				<tr>
+					<td><a href="/homework/{{ entry.id }}">{{ entry.id }}</a></td>
+					<td>{{ entry.name }}</td>
+					<td>{{ entry.due_date }}</td>
+					<td>{{ entry.description }}</td>
+					<td><a href="/homework/edit/{{ entry.id }}">Edit</a></td>
+					<td><a id="delete-link" data-callback="/homework/" data-url="/homework/{{ entry.id }}">Delete</a></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+			{% else %}
+		</table>
+		You have no entries yet
+			{% endif %}
+			<br/><br/><b><a id="actions" href="/homework/add">Add new entry</a></b>
+{% endblock %}

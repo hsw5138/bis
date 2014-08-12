@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>List of Subject Entries.</h1>
+		<table id="list-view">
+			<thead>
+				<tr>
+					<td><b>ID</td>
+					<td><b>Name</b></td>
+					<td><b> </td>
+					<td><b> </td>
+				</tr>
+			</thead>
+			{% if subject_entries %}
+			<tbody>
+			{% for entry in subject_entries %}
+				<tr>
+					<td><a href="/subject/{{ entry.id }}">{{ entry.id }}</a></td>
+					<td>{{ entry.name }}</td>
+					<td><a href="/subject/edit/{{ entry.id }}">Edit</a></td>
+					<td><a id="delete-link" data-callback="/subject/" data-url="/subject/{{ entry.id }}">Delete</a></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+			{% else %}
+		</table>
+		You have no entries yet
+			{% endif %}
+			<br/><br/><b><a id="actions" href="/subject/add">Add new entry</a></b>
+{% endblock %}

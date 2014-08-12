@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Edit Teacher Entries.</h1>
+		<form id="edit-form" name="teacher_add" method="put" action="/teacher/{{ teacher_item.id }}">
+		<input type="hidden" id="url" value="/teacher/{{ teacher_item.id }}">
+		<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" value="{{ teacher_item.name }}"/></td>
+				</tr>
+				<tr>
+					<td><input id="submit-put" type="submit" name="submit" value="Edit Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+{% endblock %}

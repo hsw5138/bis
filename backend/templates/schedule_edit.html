@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Edit Schedule Entries.</h1>
+		<form id="edit-form" name="schedule_add" method="put" action="/schedule/{{ schedule_item.id }}">
+		<input type="hidden" id="url" value="/schedule/{{ schedule_item.id }}">
+		<table>
+				<tr>
+					<td>Subject_Id:</td>
+					<td><input type="text" name="subject_id" value="{{ schedule_item.subject_id }}"/></td>
+				</tr>
+				<tr>
+					<td>Student_Id:</td>
+					<td><input type="text" name="student_id" value="{{ schedule_item.student_id }}"/></td>
+				</tr>
+				<tr>
+					<td>Teacher_Id:</td>
+					<td><input type="text" name="teacher_id" value="{{ schedule_item.teacher_id }}"/></td>
+				</tr>
+				<tr>
+					<td><input id="submit-put" type="submit" name="submit" value="Edit Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+{% endblock %}

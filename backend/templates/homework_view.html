@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>View Homework single entry.</h1>
+		<table>
+				<tr>
+					<td>Title:</td>
+					<td>{{ homework.title }}</td>
+				</tr>
+				<tr>
+					<td>Due_Date:</td>
+					<td>{{ homework.due_date }}</td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td>{{ homework.description }}</td>
+				</tr>
+		</table>
+{% endblock %}

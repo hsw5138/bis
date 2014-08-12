@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Add new Teacher Entries.</h1>
+		<form name="teacher_add" method="post" action="/teacher/">
+		<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name"/></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit" value="Add Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+
+		<a id="actions" href="/student/upload">Upload Excel</a>
+{% endblock %}

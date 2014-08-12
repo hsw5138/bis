@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+		<h1>Add new Schedule Entries.</h1>
+		<form name="schedule_add" method="post" action="/schedule/">
+		<table>
+				<tr>
+					<td>Subject_Id:</td>
+					<td>
+						<select name="subject_id">
+							{% for subject in subjects %}
+								<option value="{{ subject.id }}">{{ subject.name }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Student_Id:</td>
+					<td>
+						<select name="student_id">
+							{% for student in students %}
+								<option value="{{ student.id }}">{{ student.name }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Teacher_Id:</td>
+					<td>
+						<select name="teacher_id">
+							{% for teacher in teachers %}
+								<option value="{{ teacher.id }}">{{ teacher.name }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit" value="Add Entry"/></td>
+					<td> </td>
+				</tr>
+		</table>
+		</form>
+{% endblock %}
