@@ -90,3 +90,12 @@ def student_upload_process_controller():
 					password=column[3])
 		new_student.put()
 	return render_template('all_done.html')
+
+@student_view.route('/login', methods=["GET","POST"])
+def do_login():
+	payload = json.loads(request.data)
+	student = Student.query(Student.username==payload["username"], Student.password==payload["password"]).get()
+	if student:
+		return json.dumps(dict(id=student.id))
+	return abort(404)
+

@@ -47,7 +47,7 @@ def schedule_controller(id):
 			schedule_list = Schedule.query().fetch(1000)
 			entries=None
 			if schedule_list:
-				entries = [schedule.dto() for schedule in schedule_list]
+				entries = [schedule.json() for schedule in schedule_list]
 			if request.values.get('json'):
 				return json.dumps(dict(schedule=entries))
 			return render_template('schedule.html',schedule_entries = entries, title = "Schedule List")

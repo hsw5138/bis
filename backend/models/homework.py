@@ -15,7 +15,7 @@ class Homework(ndb.Model):
 		return dict(
 				id = self.id,
 				title = self.title,
-				due_date = self.due_date,
+				due_date = self.due_date.isoformat(),
 				description = self.description,
 				schedule_id = self.schedule_id)
 

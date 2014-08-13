@@ -10,7 +10,7 @@ from flask import Response
 from helpers import new_parser
 from helpers import edit_parser
 
-from models import Teacher
+from models import Teacher, Student
 from xl_uploader import get_row_values
 from helpers import generate_key
 
@@ -87,3 +87,14 @@ def teacher_upload_process_controller():
 					email=column[1])
 		new_teacher.put()
 	return render_template('all_done.html')
+
+@teacher_view.route('/teacher/list/<id>')
+def fetch_my_teacher(id):
+	student = Student.query(Student.id == id).get()
+	teacher_list = []
+	schedules = student.get_schedule()
+	for schedule in schedules:
+		teacher = schedule.get_teacher()
+		if teacher.dto() not in teacher_list:
+			teacher_list.append(teacher.dto())
+	return json.dumps(teacher_list)

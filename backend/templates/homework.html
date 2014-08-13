@@ -18,9 +18,10 @@
 			{% for entry in homework_entries %}
 				<tr>
 					<td><a href="/homework/{{ entry.id }}">{{ entry.id }}</a></td>
-					<td>{{ entry.name }}</td>
+					<td>{{ entry.title }}</td>
 					<td>{{ entry.due_date }}</td>
 					<td>{{ entry.description }}</td>
+					<td>{{ entry.schedule_id }}</td>
 					<td><a href="/homework/edit/{{ entry.id }}">Edit</a></td>
 					<td><a id="delete-link" data-callback="/homework/" data-url="/homework/{{ entry.id }}">Delete</a></td>
 				</tr>

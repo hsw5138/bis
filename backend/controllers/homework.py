@@ -8,9 +8,9 @@ from flask import request
 from flask import abort
 from flask import Response
 from helpers import new_parser
-from helpers import edit_parser
+from helpers import edit_parser, multikeysort
 
-from models import Homework, Schedule
+from models import Homework, Schedule, Student
 from xl_uploader import get_row_values
 from helpers import generate_key
 
@@ -92,3 +92,24 @@ def homework_upload_process_controller():
 					schedule_id=column[3])
 		new_homework.put()
 	return render_template('all_done.html')
+
+
+@homework_view.route('/homework/list/<id>')
+def fetch_homework(id):
+	student = Student.query(Student.id == id).get()
+	homework = []
+	schedules = student.get_schedule()
+	for schedule in schedules:
+		list_of_work = schedule.get_homework()
+		for work in list_of_work:
+			homework.append(work.dto())
+	homework = multikeysort(homework, ['due_date'])
+	homework = add_sort_order(homework)
+	return json.dumps(homework)
+
+def add_sort_order(input_list):
+	index = 1
+	for item in input_list:
+		item["sort_order"] = index
+		index+=1
+	return input_list

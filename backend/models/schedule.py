@@ -19,20 +19,28 @@ class Schedule(ndb.Model):
 				subject_id = self.subject_id,
 				student_id = self.student_id,
 				teacher_id = self.teacher_id)
+		
+	def json(self):
+		return dict(
+				id = self.id,
+				name = self.name,
+				subject = self.get_subject().name,
+				student = self.get_student().name,
+				teacher = self.get_teacher().name)
 
 	def get_subject(self):
 		from models import Subject
-		subject = Subject.query(Subject.subject_id==self.subject_id).get()
+		subject = Subject.query(Subject.id==self.subject_id).get()
 		return subject if subject else None
 
 	def get_student(self):
 		from models import Student
-		student = Student.query(Student.student_id==self.student_id).get()
+		student = Student.query(Student.id==self.student_id).get()
 		return student if student else None
 
 	def get_teacher(self):
 		from models import Teacher
-		teacher = Teacher.query(Teacher.teacher_id==self.teacher_id).get()
+		teacher = Teacher.query(Teacher.id==self.teacher_id).get()
 		return teacher if teacher else None
 
 	def get_homework(self):
