@@ -22,6 +22,7 @@ teacher_view = Blueprint('teacher_view', __name__)
 @teacher_view.route('/teacher/<id>',methods=['GET','PUT','DELETE'])
 def teacher_controller(id):
 	name = request.values.get('name')
+	email = request.values.get('email')
 
 	if id:
 		teacher = Teacher.query(Teacher.id==id).get()
@@ -82,6 +83,7 @@ def teacher_upload_process_controller():
 	for column in rows:
 		new_teacher = Teacher(
 					id=generate_key(),
-					name=column[0])
+					name=column[0],
+					email=column[1])
 		new_teacher.put()
 	return render_template('all_done.html')

@@ -28,6 +28,7 @@ def new_parser(passed_object, request_data):
 	for item, value in request_data.values.iteritems():
 		if hasattr(passed_object, item) and value is not None:
 			setattr(passed_object, item, value)
+		passed_object.id = generate_key()
 	return passed_object
 
 def edit_parser(passed_object, request_data):

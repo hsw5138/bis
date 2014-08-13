@@ -21,6 +21,7 @@ schedule_view = Blueprint('schedule_view', __name__)
 @schedule_view.route('/schedule/',methods=['GET','POST'],defaults={'id':None})
 @schedule_view.route('/schedule/<id>',methods=['GET','PUT','DELETE'])
 def schedule_controller(id):
+	name = request.values.get('name')
 	subject_id = request.values.get('subject_id')
 	student_id = request.values.get('student_id')
 	teacher_id = request.values.get('teacher_id')
@@ -74,4 +75,3 @@ def schedule_edit_controller(id):
 	#this is the controller to edit model entries
 	schedule_item = Schedule.query(Schedule.id==id).get()
 	return render_template('schedule_edit.html', schedule_item = schedule_item, title = "Edit Entries")
-

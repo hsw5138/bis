@@ -6,12 +6,14 @@ from ndbtools import ValidatedFloatProperty
 class Teacher(ndb.Model):
 	id = ndb.StringProperty()
 	name = ndb.StringProperty()
+	email = ndb.StringProperty()
 
 	# data transfer object to form JSON
 	def dto(self):
 		return dict(
 				id = self.id,
-				name = self.name)
+				name = self.name,
+				email = self.email)
 
 	def get_schedule(self):
 		from models import Schedule

@@ -4,6 +4,16 @@
 		<form name="schedule_add" method="post" action="/schedule/">
 		<table>
 				<tr>
+					<td>Name:</td>
+					<td>
+						<select name="name">
+							{% for name in names %}
+								<option value="{{ name.id }}">{{ name.name }}</option>
+							{% endfor %}
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td>Subject_Id:</td>
 					<td>
 						<select name="subject_id">

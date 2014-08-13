@@ -22,7 +22,8 @@ student_view = Blueprint('student_view', __name__)
 @student_view.route('/student/<id>',methods=['GET','PUT','DELETE'])
 def student_controller(id):
 	name = request.values.get('name')
-	class_id = request.values.get('class_id')
+	username = request.values.get('username')
+	email = request.values.get('email')
 
 	if id:
 		student = Student.query(Student.id==id).get()

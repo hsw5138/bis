@@ -21,9 +21,10 @@ homework_view = Blueprint('homework_view', __name__)
 @homework_view.route('/homework/',methods=['GET','POST'],defaults={'id':None})
 @homework_view.route('/homework/<id>',methods=['GET','PUT','DELETE'])
 def homework_controller(id):
-	name = request.values.get('name')
+	title = request.values.get('title')
 	due_date = request.values.get('due_date')
 	description = request.values.get('description')
+	schedule_id = request.values.get('schedule_id')
 
 	if id:
 		homework = Homework.query(Homework.id==id).get()

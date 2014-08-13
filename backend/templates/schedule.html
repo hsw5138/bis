@@ -5,6 +5,7 @@
 			<thead>
 				<tr>
 					<td><b>ID</td>
+					<td><b>Name</b></td>
 					<td><b>Subject_Id</b></td>
 					<td><b>Student_Id</b></td>
 					<td><b>Teacher_Id</b></td>
@@ -17,6 +18,7 @@
 			{% for entry in schedule_entries %}
 				<tr>
 					<td><a href="/schedule/{{ entry.id }}">{{ entry.id }}</a></td>
+					<td>{{ entry.name }}</td>
 					<td>{{ entry.subject_id }}</td>
 					<td>{{ entry.student_id }}</td>
 					<td>{{ entry.teacher_id }}</td>

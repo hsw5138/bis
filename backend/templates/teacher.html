@@ -6,6 +6,7 @@
 				<tr>
 					<td><b>ID</td>
 					<td><b>Name</b></td>
+					<td><b>Email</b></td>
 					<td><b> </td>
 					<td><b> </td>
 				</tr>
@@ -16,6 +17,7 @@
 				<tr>
 					<td><a href="/teacher/{{ entry.id }}">{{ entry.id }}</a></td>
 					<td>{{ entry.name }}</td>
+					<td>{{ entry.email }}</td>
 					<td><a href="/teacher/edit/{{ entry.id }}">Edit</a></td>
 					<td><a id="delete-link" data-callback="/teacher/" data-url="/teacher/{{ entry.id }}">Delete</a></td>
 				</tr>

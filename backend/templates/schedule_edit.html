@@ -5,6 +5,10 @@
 		<input type="hidden" id="url" value="/schedule/{{ schedule_item.id }}">
 		<table>
 				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name" value="{{ schedule_item.name}}"/></td>
+				</tr>
+				<tr>
 					<td>Subject_Id:</td>
 					<td><input type="text" name="subject_id" value="{{ schedule_item.subject_id }}"/></td>
 				</tr>

@@ -6,6 +6,7 @@ from datetime import date
 
 class Schedule(ndb.Model):
 	id = ndb.StringProperty()
+	name = ndb.StringProperty()
 	subject_id = ndb.StringProperty()
 	student_id = ndb.StringProperty()
 	teacher_id = ndb.StringProperty()
@@ -14,6 +15,7 @@ class Schedule(ndb.Model):
 	def dto(self):
 		return dict(
 				id = self.id,
+				name = self.name,
 				subject_id = self.subject_id,
 				student_id = self.student_id,
 				teacher_id = self.teacher_id)
