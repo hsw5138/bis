@@ -98,4 +98,3 @@ def do_login():
 	if student:
 		return json.dumps(dict(id=student.id))
 	return abort(404)
-

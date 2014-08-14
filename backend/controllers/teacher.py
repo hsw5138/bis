@@ -10,7 +10,7 @@ from flask import Response
 from helpers import new_parser
 from helpers import edit_parser
 
-from models import Teacher, Student
+from models import Teacher, Student, Schedule
 from xl_uploader import get_row_values
 from helpers import generate_key
 
@@ -96,5 +96,16 @@ def fetch_my_teacher(id):
 	for schedule in schedules:
 		teacher = schedule.get_teacher()
 		if teacher.dto() not in teacher_list:
+			teacher_list.append(teacher.dto())
+	return json.dumps(teacher_list)
+
+@teacher_view.route('/teacher/list/<id>')
+def fetch_all_teachers(id):
+	student = Student.query(Student.id == id).get()
+	teacher_list = []
+	schedules = student.get_schedule()
+	for schedule in schedules:
+		teacher = schedule.get_teacher()
+		if teacher.dto() in teacher_list:
 			teacher_list.append(teacher.dto())
 	return json.dumps(teacher_list)

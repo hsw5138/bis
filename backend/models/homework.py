@@ -19,6 +19,14 @@ class Homework(ndb.Model):
 				description = self.description,
 				schedule_id = self.schedule_id)
 
+	def json(self):
+		return dict(
+				id = self.id,
+				title = self.title,
+				due_date = self.due_date.isoformat(),
+				description = self.description,
+				schedule_id = self.get_schedule().name)
+
 	def get_schedule(self):
 		from models import Schedule
 		classes = Schedule.query(Schedule.id == self.schedule_id).get()

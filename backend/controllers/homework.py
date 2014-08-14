@@ -47,7 +47,7 @@ def homework_controller(id):
 			homework_list = Homework.query().fetch(1000)
 			entries=None
 			if homework_list:
-				entries = [homework.dto() for homework in homework_list]
+				entries = [homework.json() for homework in homework_list]
 			if request.values.get('json'):
 				return json.dumps(dict(homework=entries))
 			return render_template('homework.html',homework_entries = entries, title = "Homework List")
