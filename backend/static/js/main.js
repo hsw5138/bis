@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	$('#delete-link').click(function(e){
+	$('.delete-link').click(function(e){
 		e.preventDefault();
+		console.log("delete clicked for" + $(e.currentTarget).data('url'));
 		url = $(e.currentTarget).data('url');
 		callback = $(e.currentTarget).data('callback');
 		if (confirm('Are you sure that you want to delete this record?'))

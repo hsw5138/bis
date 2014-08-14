@@ -38,7 +38,7 @@ def schedule_controller(id):
 				schedule.put()
 				return 'Value Updated', 204
 			elif request.method == 'DELETE':
-				schedule.delete()
+				schedule.key.delete()
 				return 'Item deleted', 204
 			else:
 				return 'Method Not Allowed'

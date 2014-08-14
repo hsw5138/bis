@@ -13,6 +13,7 @@ from helpers import edit_parser
 from models import Student
 from helpers import generate_key
 from xl_uploader import get_row_values
+import logging
 
 student_view = Blueprint('student_view', __name__)
 
@@ -28,16 +29,21 @@ def student_controller(id):
 	if id:
 		student = Student.query(Student.id==id).get()
 		if student:
+			logging.error("student found")
 			if request.method == 'GET':
+				logging.error("In get")
 				if request.values.get('json'):
 					return json.dumps(dict(student=student.json))
 				return render_template('student_view.html',student = student, title = "Student List")
 			elif request.method == 'PUT':
+				logging.error("In put")
 				student = edit_parser(student,request)
 				student.put()
 				return 'Value Updated', 204
 			elif request.method == 'DELETE':
-				student.delete()
+				logging.error("In delete")
+				student.key.delete()
+				logging.error("after delete")
 				return 'Item deleted', 204
 			else:
 				return 'Method Not Allowed'
@@ -93,8 +99,8 @@ def student_upload_process_controller():
 
 @student_view.route('/login', methods=["GET","POST"])
 def do_login():
-	payload = json.loads(request.data)
+	payload=json.loads(request.data)
 	student = Student.query(Student.username==payload["username"], Student.password==payload["password"]).get()
 	if student:
 		return json.dumps(dict(id=student.id))
-	return abort(404)
+	return "Not Found"

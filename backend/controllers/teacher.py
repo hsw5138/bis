@@ -36,7 +36,7 @@ def teacher_controller(id):
 				teacher.put()
 				return 'Value Updated', 204
 			elif request.method == 'DELETE':
-				teacher.delete()
+				teacher.key.delete()
 				return 'Item deleted', 204
 			else:
 				return 'Method Not Allowed'

@@ -35,7 +35,7 @@ def subject_controller(id):
 				subject.put()
 				return 'Value Updated', 204
 			elif request.method == 'DELETE':
-				subject.delete()
+				subject.key.delete()
 				return 'Item deleted', 204
 			else:
 				return 'Method Not Allowed'

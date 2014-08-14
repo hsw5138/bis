@@ -38,7 +38,7 @@ def homework_controller(id):
 				homework.put()
 				return 'Value Updated', 204
 			elif request.method == 'DELETE':
-				homework.delete()
+				homework.key.delete()
 				return 'Item deleted', 204
 			else:
 				return 'Method Not Allowed'
