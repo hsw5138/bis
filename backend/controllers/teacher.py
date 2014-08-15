@@ -8,7 +8,7 @@ from flask import request
 from flask import abort
 from flask import Response
 from helpers import new_parser
-from helpers import edit_parser, multikeysort
+from helpers import edit_parser
 
 from models import Teacher, Student, Schedule
 from xl_uploader import get_row_values
@@ -102,15 +102,4 @@ def fetch_my_teacher(id):
 	for teacher in teachers:
 		if teacher.dto() not in teacher_list:
 			other_list.append(teacher.dto())
-	teacher_list = multikeysort(teacher_list, ['name'])
-	teacher_list = add_sort_order(teacher_list)
-	other_list = multikeysort(other_list, ['name'])
-	other_list = add_sort_order(other_list)
 	return json.dumps(dict(my_teacher=teacher_list,other_teachers=other_list))
-
-def add_sort_order(input_list):
-	index = 1
-	for item in input_list:
-		item["sort_order"] = index
-		index+=1
-	return input_list
