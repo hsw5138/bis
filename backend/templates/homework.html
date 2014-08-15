@@ -9,6 +9,7 @@
 					<td><b>Due_Date</b></td>
 					<td><b>Description</b></td>
 					<td><b>Schedule_Id</td>
+					<td><b>Subject_Id</td>
 					<td><b> </td>
 					<td><b> </td>
 				</tr>
@@ -22,6 +23,7 @@
 					<td>{{ entry.due_date }}</td>
 					<td>{{ entry.description }}</td>
 					<td>{{ entry.schedule_id }}</td>
+					<td>{{ entry.subject_id }}</td>
 					<td><a href="/homework/edit/{{ entry.id }}">Edit</a></td>
 					<td><a id="delete-link" data-callback="/homework/" data-url="/homework/{{ entry.id }}">Delete</a></td>
 				</tr>

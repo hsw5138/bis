@@ -17,7 +17,8 @@ class Homework(ndb.Model):
 				title = self.title,
 				due_date = self.due_date.isoformat(),
 				description = self.description,
-				schedule_id = self.schedule_id)
+				schedule_id = self.schedule_id,
+				subject_id = self.get_schedule().subject_id)
 
 	def json(self):
 		return dict(
@@ -25,7 +26,8 @@ class Homework(ndb.Model):
 				title = self.title,
 				due_date = self.due_date.isoformat(),
 				description = self.description,
-				schedule_id = self.get_schedule().name)
+				schedule_id = self.get_schedule().name,
+				subject_id = self.get_schedule().get_subject().name)
 
 	def get_schedule(self):
 		from models import Schedule

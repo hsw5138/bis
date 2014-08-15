@@ -21,6 +21,7 @@ homework_view = Blueprint('homework_view', __name__)
 @homework_view.route('/homework/',methods=['GET','POST'],defaults={'id':None})
 @homework_view.route('/homework/<id>',methods=['GET','PUT','DELETE'])
 def homework_controller(id):
+	subject_id = request.values.get('subject_id')
 	title = request.values.get('title')
 	due_date = request.values.get('due_date')
 	description = request.values.get('description')
@@ -74,26 +75,6 @@ def homework_edit_controller(id):
 	homework_item = Homework.query(Homework.id==id).get()
 	return render_template('homework_edit.html', homework_item = homework_item, title = "Edit Entries")
 
-@homework_view.route('/homework/upload')
-def homework_upload_controller():
-	return render_template('homework_excel.html')
-
-@homework_view.route('/homework/upload/process', methods=["GET","POST"])
-def homework_upload_process_controller():
-	file = request.file('file')
-	rows = get_row_values(file)
-	rows=rows[1:]
-	for column in rows:
-		new_homework = Homework(
-					id=generate_key(),
-					title=column[0],
-					due_date=column[1],
-					description=column[2],
-					schedule_id=column[3])
-		new_homework.put()
-	return render_template('all_done.html')
-
-
 @homework_view.route('/homework/list/<id>')
 def fetch_homework(id):
 	student = Student.query(Student.id == id).get()
@@ -102,7 +83,7 @@ def fetch_homework(id):
 	for schedule in schedules:
 		list_of_work = schedule.get_homework()
 		for work in list_of_work:
-			homework.append(work.dto())
+			homework.append(work.json())
 	homework = multikeysort(homework, ['due_date'])
 	homework = add_sort_order(homework)
 	return json.dumps(homework)
