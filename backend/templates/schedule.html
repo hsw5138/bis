@@ -23,7 +23,7 @@
 					<td>{{ entry.student }}</td>
 					<td>{{ entry.teacher }}</td>
 					<td><a href="/schedule/edit/{{ entry.id }}">Edit</a></td>
-					<td><a id="delete-link" data-callback="/schedule/" data-url="/schedule/{{ entry.id }}">Delete</a></td>
+					<td><a class="delete-link" data-callback="/schedule/" data-url="/schedule/{{ entry.id }}">Delete</a></td>
 				</tr>
 			{% endfor %}
 			</tbody>

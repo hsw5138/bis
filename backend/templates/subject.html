@@ -17,7 +17,7 @@
 					<td><a href="/subject/{{ entry.id }}">{{ entry.id }}</a></td>
 					<td>{{ entry.name }}</td>
 					<td><a href="/subject/edit/{{ entry.id }}">Edit</a></td>
-					<td><a id="delete-link" data-callback="/subject/" data-url="/subject/{{ entry.id }}">Delete</a></td>
+					<td><a class="delete-link" data-callback="/subject/" data-url="/subject/{{ entry.id }}">Delete</a></td>
 				</tr>
 			{% endfor %}
 			</tbody>
